@@ -85,6 +85,7 @@ body {
 }
 
 /* Base colors for Sundays and Saturdays */
+/* These set the default text colors for weekend days. */
 .calendar-grid .day.sun {
     color: firebrick;
 }
@@ -93,33 +94,37 @@ body {
     color: forestgreen;
 }
 
+/* Styling for Current Day */
+/* This rule should be placed here to ensure it applies over general day styles. */
+.calendar-grid .day.current-day {
+    background-color: rgba(0, 128, 0, 0.7);
+    color: #fff;
+    border: 2px solid rgba(34, 139, 34, 0.7);
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    font-weight: bold;
+}
+
 /* Styling for Public Holidays (PH) - RED TRANSPARENT CIRCLE */
+/* Placed after .day.sun/.day.sat to override their background/border/color properties. */
 .calendar-grid .day.public-holiday {
-    background-color: rgba(178, 34, 34, 0.7); 
+    background-color: rgba(178, 34, 34, 0.7);
     color: #fff;
     font-weight: bold;
-    border: 2px solid rgba(139, 0, 0, 0.7); 
+    border: 2px solid rgba(139, 0, 0, 0.7);
     border-radius: 50%;
 }
 
 /* Styling for Restricted Holidays (RH) - GOLD TRANSPARENT CIRCLE */
+/* Placed AFTER Public Holidays and weekend styles to give RH the highest priority. */
+/* This ensures that if a day is both a weekend and an RH, it will be styled as an RH. */
 .calendar-grid .day.restricted-holiday {
-    background-color: rgba(255, 215, 0, 0.7); 
+    background-color: rgba(255, 215, 0, 0.7);
     color: #333;
     font-weight: bold;
     border: 2px solid rgba(184, 134, 11, 0.7);
     border-radius: 50%;
-}
-
-
-.calendar-grid .day.current-day {
-    background-color: rgba(0, 128, 0, 0.7); 
-    color: #fff; 
-    border: 2px solid rgba(34, 139, 34, 0.7);
-    border-radius: 50%;
-    position: relative; /* Ensure proper layering */
-    z-index: 1; /* Ensure it's on top of other elements if needed */
-    font-weight: bold; 
 }
 
 
